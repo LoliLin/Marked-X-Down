@@ -23,12 +23,12 @@ jobs:
 
       - name: ZIP
         run: |
-          zip -r release.zip . -x "*.git*" "*.github/*" "release.zip"
+          zip -r release.zip . -x "*.git*" "*.github/*" "Marked-X-Down_installpack.zip"
 
       - name: Release 
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "release.zip"
+          artifacts: "Marked-X-Down_installpack.zip"
           tag: ${{ github.event.inputs.tag_name }}
           name: ${{ github.event.inputs.release_name || github.event.inputs.tag_name }}
           generateReleaseNotes: true   
