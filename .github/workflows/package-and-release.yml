@@ -1,0 +1,35 @@
+name: Package and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'tag'
+        required: true
+        default: 'latest'
+      release_name:
+        description: 'Release Title'
+        required: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   
+
+    steps:
+      - name: Check Out
+        uses: actions/checkout@v4
+
+      - name: ZIP
+        run: |
+          zip -r release.zip . -x "*.git*" "*.github/*" "release.zip"
+
+      - name: Release 
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "release.zip"
+          tag: ${{ github.event.inputs.tag_name }}
+          name: ${{ github.event.inputs.release_name || github.event.inputs.tag_name }}
+          generateReleaseNotes: true   
+          allowUpdates: true        
