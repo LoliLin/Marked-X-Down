@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Marked'X Down",
-  "version": "1.2",
+  "version": "1.3",
   "description": "Parses and displays Markdown and LaTeX in X.com tweets while preserving native SPA links and styles.",
   "icons": {
     "16": "icons/icon.png",
