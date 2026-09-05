@@ -96,3 +96,8 @@
 .x-md-container a:hover {
     text-decoration: underline;
 }
+
+/* Hide original tweet while processed by Marked'X Down to prevent React re-render conflicts */
+[data-markdown-processed="true"] {
+    display: none !important;
+}
